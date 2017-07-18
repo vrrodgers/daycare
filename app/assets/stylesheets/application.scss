@@ -1,1 +1,29 @@
 @import "bootstrap";
+@import "font-awesome";
+@import "social-share-button";
+
+#Container{
+    width: 960px;
+    margin: 0 auto;
+}
+// nav
+.nav-link{
+  color: red;
+  text-align: center;
+  word-spacing: 4px;
+}
+
+#mapouter{
+
+}
+.w3-sidebar{
+  height:100%;width:
+  200px;background-color:#fff;
+  position:fixed!important;
+  z-index:1;overflow:auto
+}
+
+.circle_img{
+    border-radius: 50%;
+ 
+}
