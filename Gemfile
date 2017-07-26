@@ -53,5 +53,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'social-share-button', '~> 0.10.0'
 gem 'mail_form', '~> 1.7'
+gem 'devise', '~> 4.3'
+gem 'rails_admin', '~> 1.2'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

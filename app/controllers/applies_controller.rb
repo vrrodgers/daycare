@@ -36,13 +36,10 @@ class AppliesController < ApplicationController
                                     :work_hours,
                                     :cell_phone,
                                     :custodial_parent,
-                                    :mother_social
+                                    :mother_social,
                                     :email,
-                                    :driver_license_number
-                                    :maritial_status_id
-
-
-
+                                    :driver_license_number,
+                                    :maritial_status_id,
                                     )
     end
 end

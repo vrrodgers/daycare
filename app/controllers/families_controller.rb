@@ -30,9 +30,6 @@ class FamiliesController < ApplicationController
                                   :relationship_to_child,
                                   :pin,
                                   :pick_up,
-
-
                                   )
-
-
+  end
 end

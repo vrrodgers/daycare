@@ -28,8 +28,6 @@ class InformationsController < ApplicationController
                                         :tuition_amount,
                                         :fequency_id,
                                         :comments,
-
                                         )
-
-
+  end
 end
