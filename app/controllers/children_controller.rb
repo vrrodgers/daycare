@@ -1,9 +1,22 @@
 class ChildrenController < ApplicationController
+  before_action :set_child, only: %i[show edit update]
+
   def show; end
 
-  def create; end
+  def create
+    @child = Child.new(child_params)
+    respone_to do |format|
+      if @child.save
+        format.html { redirect_to parent_path, notice: 'Parent information saved.' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
 
-  def new; end
+  def new
+    @child = Child.new
+   end
 
   def edit; end
 
@@ -14,7 +27,7 @@ class ChildrenController < ApplicationController
   private
 
   def set_child
-    @application = Child.find(params[:id])
+    @child = Child.find(params[:id])
   end
 
   def child_params
