@@ -1,30 +1,32 @@
 class ParentsController < ApplicationController
-  before_action :set_parent, only: %i[show edit update]
+  before_action :set_parent, only: [:show, :edit, :update]
 
   def show; end
 
+  def new
+    @parent = Parent.new
+  end
+
   def create
     @parent = Parent.new(parent_params)
-    respone_to do |format|
+    respond_to do |format|
       if @parent.save
-        format.html { redirect_to child_path, notice: 'Parent information saved.' }
+        format.html { redirect_to new_childs_path, notice: 'Parent information saved.' }
       else
         format.html { render :new }
       end
     end
   end
 
-  def new
-    @parent = Parent.new
-  end
-
   def edit; end
 
   def update
-    if @parent.update(parent_params)
-      flash[:success] = 'Parent was created '
-    else
-      render 'edit'
+    respond_to do |format|
+      if @parent.update(parent_params)
+        format.html { redirect_to new_childs_path, notice: 'Parent information was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
@@ -39,8 +41,8 @@ class ParentsController < ApplicationController
       :parent_type_id,
       :first_name,
       :Middle_initial,
+      :gender_id,
       :last_name,
-      :address,
       :occupation,
       :home_phone,
       :employed_by,
@@ -52,7 +54,8 @@ class ParentsController < ApplicationController
       :mother_social,
       :email,
       :driver_license_number,
-      :marital_status_id
+      :marital_status_id,
+      addresses_attributes: %i[id name zipcode city state _destroy]
     )
   end
 end
