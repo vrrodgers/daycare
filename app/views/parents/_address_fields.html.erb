@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="form-group nested-fields">
+    <div class"col-md-4">
+      <%= f.label :address%>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class"col-md-4">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+    </div>
+    <div class"col-md-2">
+      <%= f.label :state %>
+      <%= f.text_field :state, class: 'form-control' %>
+    </div>
+    <div class"col-md-2">
+      <%= f.label :zipcode %>
+      <%= f.text_field :zipcode, class: 'form-control' %>
+    </div>
+    <%= link_to_remove_association 'Remove Address', f, class: "btn btn-danger" %>
+  </div>
+</div>

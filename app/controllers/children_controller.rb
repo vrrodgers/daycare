@@ -5,7 +5,7 @@ class ChildrenController < ApplicationController
 
   def create
     @child = Child.new(child_params)
-    respone_to do |format|
+    respond_to do |format|
       if @child.save
         format.html { redirect_to parent_path, notice: 'Parent information saved.' }
       else
@@ -16,7 +16,7 @@ class ChildrenController < ApplicationController
 
   def new
     @child = Child.new
-   end
+  end
 
   def edit; end
 

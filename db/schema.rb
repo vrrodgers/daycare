@@ -10,14 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725011734) do
+ActiveRecord::Schema.define(version: 20170811004142) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "zipcode"
+    t.string   "city"
+    t.string   "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  create_table "applies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "children", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "Middle_initial"
     t.string   "last_name"
     t.string   "grade"
-    t.string   "child_address"
     t.string   "gender_id"
     t.integer  "date_of_birth"
     t.integer  "child_social_security"
@@ -29,6 +43,21 @@ ActiveRecord::Schema.define(version: 20170725011734) do
     t.boolean  "photagraphy"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "address_id"
+    t.integer  "user_id"
+    t.string   "name"
+  end
+
+  create_table "families", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "relationship"
+    t.string   "pin"
+    t.boolean  "pick_up"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_families_on_user_id", using: :btree
   end
 
   create_table "frequencies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -37,10 +66,32 @@ ActiveRecord::Schema.define(version: 20170725011734) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, length: { slug: 70, scope: 70 }, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", length: { slug: 140 }, using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
   create_table "genders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "tuition_amount"
+    t.string   "fequency_id"
+    t.string   "comments"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_information_on_user_id", using: :btree
   end
 
   create_table "marital_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -69,23 +120,25 @@ ActiveRecord::Schema.define(version: 20170725011734) do
     t.string   "first_name"
     t.string   "Middle_initial"
     t.string   "last_name"
-    t.string   "address"
     t.string   "occupation"
-    t.integer  "home_phone"
+    t.string   "home_phone",            limit: 10
     t.string   "employed_by"
-    t.integer  "office_phone"
+    t.string   "office_phone",          limit: 10
     t.string   "work_address"
     t.string   "work_hours"
-    t.integer  "cell_phone"
+    t.string   "cell_phone",            limit: 10
     t.boolean  "custodial_parent"
     t.integer  "mother_social"
     t.string   "email"
     t.string   "driver_license_number"
     t.integer  "marital_status_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "frequency_id"
     t.integer  "gender_id"
+    t.integer  "address_id"
+    t.integer  "user_id"
+    t.string   "name"
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -98,7 +151,7 @@ ActiveRecord::Schema.define(version: 20170725011734) do
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.integer  "role_id"
-    t.string   "family_name"
+    t.string   "name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -109,10 +162,14 @@ ActiveRecord::Schema.define(version: 20170725011734) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "slug"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
+  add_foreign_key "families", "users"
+  add_foreign_key "information", "users"
   add_foreign_key "parent_children", "children"
   add_foreign_key "parent_children", "parents"
 end

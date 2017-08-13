@@ -1,0 +1,10 @@
+<%= f.fields_for :addresses do |address| %>
+<div>
+  <%= address.label :city %>
+  <%= address.text_field :city %>
+
+  <%= address.label :state %>
+  <%= address.text_field :state %>
+</div>
+<% end %>
+</div>

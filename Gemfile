@@ -56,5 +56,7 @@ gem 'mail_form', '~> 1.7'
 gem 'devise', '~> 4.3'
 gem 'rails_admin', '~> 1.2'
 gem 'petergate', '~> 1.7', '>= 1.7.5'
+gem 'cocoon', '~> 1.2', '>= 1.2.10'
+gem 'friendly_id', '~> 5.1'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
