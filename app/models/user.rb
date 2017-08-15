@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :parents, dependent: :destroy
   has_many :children, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :Activites
 
   extend FriendlyId
  friendly_id :name, use: :slugged
