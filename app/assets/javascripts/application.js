@@ -15,5 +15,8 @@
 //= require jquery_ujs
 //= require social-share-button
 //= require cocoon
+//= require moment
+//= require fullcalendar
 //= require turbolinks
 //= require_tree .
+//= require fullcalendar_engine/application

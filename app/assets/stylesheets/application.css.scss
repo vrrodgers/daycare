@@ -1,6 +1,8 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "social-share-button";
+//= require fullcalendar
+
 
 #Container{
     width: 960px;
@@ -65,5 +67,5 @@
   text-align: center;
 }
 .panel-footer{
-  
+
 }
