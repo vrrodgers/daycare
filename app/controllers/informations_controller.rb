@@ -1,19 +1,21 @@
 class InformationsController < ApplicationController
+  before_action :set_information, only: [:show, :edit, :update]
+
   def show; end
+
+  def new
+    @information = Information.new
+  end
 
   def create
     @information = Information.new(information_params)
     respone_to do |format|
       if @information.save
-        format.html { redirect_to information_path, notice: ' information saved.' }
+        format.html { redirect_to new_family_path, notice: ' information saved.' }
       else
         format.html { render :new }
       end
     end
-  end
-
-  def new
-    @information = Information.new
   end
 
   def edit; end
@@ -31,13 +33,13 @@ class InformationsController < ApplicationController
   private
 
   def set_information
-    @application = Information.find(params[:id])
+    @information = Information.find(params[:id])
   end
 
   def information_params
     params.require(:information).permit(
       :tuition_amount,
-      :fequency_id,
+      :frequency_id,
       :comments
     )
   end

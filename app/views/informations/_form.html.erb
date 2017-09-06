@@ -1,0 +1,39 @@
+<div class="container">
+  <%= form_for(new_information_path) do |f| %>
+    <% if @information.errors.any? %>
+      <% @information.errors.full_messages.each do |error| %>
+        <%= alert_generator error%>
+      <%end%>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-12">
+      <h1> Pay Information</h1>
+      <hr />
+      </div>
+    </div>
+
+     <div class="row">
+       <div class="col-md-3">
+         <div class="form-group">
+           <%= f.text_field :tuition_amount, class: 'form-control', placeholder: 'Tution Amount' %>
+           <br />
+           <%= f.collection_select :frequency_id, Frequency.all, :id, :name , { include_blank: false }, {class: "form-control"}%>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <%= f.text_area :comments, class: 'form-control', rows: 7, placeholder: 'Comments' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <%= f.submit "Submit", class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  mount FullcalendarEngine::Engine => '/calendar', as: "/fullcalendar_engine"
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :users do
@@ -23,4 +22,5 @@ Rails.application.routes.draw do
   resources :families
   resources :informations
   resources :applies
+  resources :events
 end

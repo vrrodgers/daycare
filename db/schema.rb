@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816005813) do
+ActiveRecord::Schema.define(version: 20170829001614) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -49,14 +49,16 @@ ActiveRecord::Schema.define(version: 20170816005813) do
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "Name"
-    t.date     "date"
-    t.integer  "cost"
-    t.text     "description", limit: 65535
-    t.text     "comments",    limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "user_id"
+    t.string   "title"
+    t.datetime "start"
+    t.datetime "end"
+    t.boolean  "all_day",                       default: false
+    t.text     "description",     limit: 65535
+    t.integer  "event_series_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "color"
+    t.index ["event_series_id"], name: "index_events_on_event_series_id", using: :btree
   end
 
   create_table "families", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -87,28 +89,6 @@ ActiveRecord::Schema.define(version: 20170816005813) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", length: { slug: 140 }, using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
-  end
-
-  create_table "fullcalendar_engine_event_series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "frequency",  default: 1
-    t.string   "period",     default: "monthly"
-    t.datetime "starttime"
-    t.datetime "endtime"
-    t.boolean  "all_day",    default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "fullcalendar_engine_events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title"
-    t.datetime "starttime"
-    t.datetime "endtime"
-    t.boolean  "all_day",                       default: false
-    t.text     "description",     limit: 65535
-    t.integer  "event_series_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id", using: :btree
   end
 
   create_table "genders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

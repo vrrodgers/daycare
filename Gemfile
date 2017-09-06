@@ -58,8 +58,7 @@ gem 'rails_admin', '~> 1.2'
 gem 'petergate', '~> 1.7', '>= 1.7.5'
 gem 'cocoon', '~> 1.2', '>= 1.2.10'
 gem 'friendly_id', '~> 5.1'
-gem 'fullcalendar_engine', '~> 1.0', '>= 1.0.6'
-gem 'momentjs-rails'
+gem 'simple_form', '~> 3.5'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -15,8 +15,10 @@
 //= require jquery_ujs
 //= require social-share-button
 //= require cocoon
+//= require turbolinks
 //= require moment
 //= require fullcalendar
-//= require turbolinks
+//= require daterangepicker
 //= require_tree .
-//= require fullcalendar_engine/application
+
+$('#calendar').fullCalendar({});

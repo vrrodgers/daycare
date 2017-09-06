@@ -79,19 +79,19 @@
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
-          <%= f.collection_select :gender_id, Gender.all, :id, :name %>
+          <%= f.collection_select :gender_id, Gender.all, :id, :name, { include_blank: false }, {class: "form-control"} %>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="form-group">
-          <%= f.collection_select :marital_status_id, MaritalStatus.all, :id, :name %>
+          <%= f.collection_select :marital_status_id, MaritalStatus.all, :id, :name, { include_blank: false }, {class: "form-control"} %>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="form-group">
-          <%= f.collection_select :parent_type_id, ParentType.all, :id, :name %>
+          <%= f.collection_select :parent_type_id, ParentType.all, :id, :name, { include_blank: false }, {class: "form-control"} %>
         </div>
       </div>
     </div>
@@ -145,7 +145,7 @@
         <hr/>
       </div>
     </div>
-  
+
     <div>
       <%= link_to_add_association 'Add Address', f, :addresses, class: "btn btn-primary" %>
     </div>
