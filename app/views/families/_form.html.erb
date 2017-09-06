@@ -1,0 +1,39 @@
+<div class="container">
+  <%= form_for(new_family_path) do |f| %>
+      <% if @family.errors.any? %>
+        <% @family.errors.full_messages.each do |error| %>
+          <%= alert_generator error%>
+        <%end%>
+      <% end %>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h1> Pick Up Information</h1>
+        <hr />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.text_field :pick_up_name, class: 'form-control', placeholder: 'Pick Up Name' %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <%= f.text_field :pick_up_phone, class: 'form-control', placeholder: 'Pick Up Phone' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.text_field :relationship_to_child, class: 'form-control', placeholder: 'Relationship to Child' %>
+      </div>
+      <div class="col-md-3">
+        <%= f.text_field :pin, class: 'form-control', placeholder: 'Validation Pin' %>
+      </div>
+      <div class="col-md-3">
+        <%= f.label:pick_up, "Pick Up" %>
+        <%= f.check_box :pick_up %>
+      </div>
+    </div>
+  <% end %>
+</div>
