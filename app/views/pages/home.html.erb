@@ -29,7 +29,13 @@
       </iframe> <a href="http://www.embedgooglemap.net"></a></div><style>.mapouter{overflow:hidden;height:500px;width:600px;}.gmap_canvas {background:none!important;height:500px;width:600px;}</style>
     </div>
 
+     <%= link_to "Apply here", new_user_registration_path, type:"button", class:"btn btn-primary btn-lg" %></button>
+    <% if current_user %>
+      <%=link_to "Apply Here", "users/#{current_user.id}/parents/new", class: "btn btn-primary btn-lg"%>
+      <%=link_to "Apply Here 4", "users/#{current_user.id}/children/new", class: "btn btn-primary btn-lg"%>
+    <% end %>
     <div class="icons">
+      <br />
       <h4>Follow us</h4>
         <a href="https://facebook.com" target="_blank_"> <%= fa_icon "facebook"%>
         <a href="https://twitter.com" target="_blank_"> <%= fa_icon "twitter"%>

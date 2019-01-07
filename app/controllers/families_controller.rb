@@ -1,9 +1,12 @@
 class FamiliesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
-    @family = Family.new(parent_params)
+    @user = current_user.id
+    @family = current_user.families.build(family_params)
     respone_to do |format|
       if @parent.save
-        format.html { redirect_to family_path, notice: 'Parent information saved.' }
+        format.html { redirect_to root_path, notice: 'Application was submitted successfully' }
       else
         format.html { render :new }
       end
@@ -11,7 +14,7 @@ class FamiliesController < ApplicationController
   end
 
   def new
-    @family = Family.new
+    @family = current_user.families.build
   end
 
   def edit; end
@@ -38,6 +41,7 @@ class FamiliesController < ApplicationController
   def family_params
     params.require(:family).permit(
       :pick_up_name,
+      :user_id,
       :pick_up_phone,
       :relationship_to_child,
       :pin,

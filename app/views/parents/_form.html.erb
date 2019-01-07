@@ -2,9 +2,12 @@
 
   <%= form_for(@parent) do |f| %>
     <% if @parent.errors.any? %>
-      <% @parent.errors.full_messages.each do |error| %>
-        <%= alert_generator error%>
-      <%end%>
+      <div id="error_explanation">
+        <h2><%= pluralize(@parent.errors.count, "error") %> prohibited this Parent from being saved:</h2>
+        <% @parent.errors.full_messages.each do |msg| %>
+          <div  class="alert alert-danger" role="alert"><%= msg %></div>
+        <% end %>
+      </div>
     <% end %>
 
     <div class="row">
@@ -59,7 +62,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
-          <%= f.text_field :mother_social, class: 'form-control', placeholder: 'Social' %>
+          <%= f.text_field :social, class: 'form-control', placeholder: 'Social' %>
         </div>
       </div>
 

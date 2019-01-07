@@ -1,13 +1,16 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: %i[show edit update]
+  before_action :authenticate_user!
+
 
   def show; end
 
   def create
-    @child = Child.new(child_params)
+    @user = current_user.id
+    @child = current_user.children.build(child_params)
     respond_to do |format|
       if @child.save
-        format.html { redirect_to parent_path, notice: 'Parent information saved.' }
+        format.html { redirect_to "/users/#{@user}/details/new" ,notice: 'Parent information saved.' }
       else
         format.html { render :new }
       end
@@ -15,7 +18,7 @@ class ChildrenController < ApplicationController
   end
 
   def new
-    @child = Child.new
+    @child = current_user.children.build
   end
 
   def edit; end
@@ -45,7 +48,8 @@ class ChildrenController < ApplicationController
       :pediatrician_name,
       :pediatrician_phone,
       :pediatrician_address,
-      :photagraphy
+      :photagraphy,
+      :user_id,
 
     )
   end

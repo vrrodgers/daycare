@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+   gem 'pry-byebug'
 end
 
 group :development do
@@ -54,11 +55,11 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'social-share-button', '~> 0.10.0'
 gem 'mail_form', '~> 1.7'
 gem 'devise', '~> 4.3'
-gem 'rails_admin', '~> 1.2'
 gem 'petergate', '~> 1.7', '>= 1.7.5'
 gem 'cocoon', '~> 1.2', '>= 1.2.10'
 gem 'friendly_id', '~> 5.1'
 gem 'simple_form', '~> 3.5'
+gem 'rails_admin', '~> 1.2'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -1,17 +1,27 @@
 class ParentsController < ApplicationController
   before_action :set_parent, only: [:show, :edit, :update]
+  before_action :authenticate_user!
+
 
   def show; end
 
   def new
-    @parent = Parent.new
+    @user = current_user.id
+    @apply = Parent.where(user_id: @user)
+    if @apply == nil
+      @parent = current_user.parents.build
+    else
+      @parent = @apply
+      redirect_to edit_user_parent_path(@user, @apply)
+    end
   end
 
   def create
-    @parent = Parent.new(parent_params)
+    @user = current_user.id
+    @parent = current_user.parents.build(parent_params)
     respond_to do |format|
       if @parent.save
-        format.html { redirect_to new_childs_path, notice: 'Parent information saved.' }
+        format.html { redirect_to "/users/#{@user}/children/new", notice: 'Parent information saved.' }
       else
         format.html { render :new }
       end
@@ -23,7 +33,7 @@ class ParentsController < ApplicationController
   def update
     respond_to do |format|
       if @parent.update(parent_params)
-        format.html { redirect_to new_childs_path, notice: 'Parent information was successfully updated.' }
+        format.html { redirect_to new_user_childs_path, notice: 'Parent information was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -39,6 +49,7 @@ class ParentsController < ApplicationController
   def parent_params
     params.require(:parent).permit(
       :parent_type_id,
+      :user_id,
       :first_name,
       :Middle_initial,
       :gender_id,

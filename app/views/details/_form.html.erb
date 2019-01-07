@@ -1,7 +1,7 @@
 <div class="container">
-  <%= form_for(new_information_path) do |f| %>
-    <% if @information.errors.any? %>
-      <% @information.errors.full_messages.each do |error| %>
+  <%= form_for(new_detail_path) do |f| %>
+    <% if @detail.errors.any? %>
+      <% @detail.errors.full_messages.each do |error| %>
         <%= alert_generator error%>
       <%end%>
     <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829001614) do
+ActiveRecord::Schema.define(version: 20170912235038) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 20170829001614) do
     t.string   "last_name"
     t.string   "grade"
     t.string   "gender_id"
-    t.integer  "date_of_birth"
-    t.integer  "child_social_security"
+    t.date     "date_of_birth"
+    t.string   "child_social_security", limit: 9
     t.string   "medical_conditions"
     t.text     "allergies",             limit: 65535
     t.string   "pediatrician_name"
-    t.integer  "pediatrician_phone"
+    t.string   "pediatrician_phone",    limit: 10
     t.string   "pediatrician_address"
     t.boolean  "photagraphy"
     t.datetime "created_at",                          null: false
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 20170829001614) do
     t.integer  "address_id"
     t.integer  "user_id"
     t.string   "name"
+  end
+
+  create_table "details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "tuition_amount"
+    t.integer  "frequency_id"
+    t.string   "comments"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_informations_on_user_id", using: :btree
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -97,16 +107,6 @@ ActiveRecord::Schema.define(version: 20170829001614) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "tuition_amount"
-    t.string   "fequency_id"
-    t.string   "comments"
-    t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["user_id"], name: "index_information_on_user_id", using: :btree
-  end
-
   create_table "marital_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20170829001614) do
     t.string   "work_hours"
     t.string   "cell_phone",            limit: 10
     t.boolean  "custodial_parent"
-    t.integer  "mother_social"
+    t.string   "social",                limit: 9
     t.string   "email"
     t.string   "driver_license_number"
     t.integer  "marital_status_id"
@@ -181,8 +181,8 @@ ActiveRecord::Schema.define(version: 20170829001614) do
     t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
+  add_foreign_key "details", "users"
   add_foreign_key "families", "users"
-  add_foreign_key "information", "users"
   add_foreign_key "parent_children", "children"
   add_foreign_key "parent_children", "parents"
 end
