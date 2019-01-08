@@ -27,6 +27,7 @@
 //= require_tree .
 
 $('#calendar').fullCalendar({});
+$('.carousel').carousel()
 
 
 

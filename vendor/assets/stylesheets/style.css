@@ -487,6 +487,9 @@ input.white[type=submit]:hover {
     image: auto;
     height: 100%;
     overflow: hidden;
+    width: 100%;
+    background-repeat:no-repeat;
+    background-size:contain;
     
 }
 
