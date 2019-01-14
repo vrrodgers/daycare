@@ -1,0 +1,5 @@
+<div class="transitions-enabled" id="gallery">
+  <% @gallery.each do |gallery| %>
+      <%= image_tag gallery.image, height: "#{gallery.height}px;", width: "#{gallery.width}px;" %>
+    <% end %>
+</div>

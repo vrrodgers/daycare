@@ -15,11 +15,12 @@ Rails.application.routes.draw do
   get 'about_us', to: 'pages#about_us'
   get 'contact_us', to: 'pages#contact_us'
   root to: 'pages#home'
-
+  get 'gallery', to: 'pages#gallery'
   resources :parents
   resources :children
   resources :families
   resources :details
   resources :applies
   resources :events
+
 end
