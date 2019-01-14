@@ -6,6 +6,34 @@
 @import "jquery.bxslider";
 @import "style";
 
+// Logo
+ #logo {
+     width: 142px;
+     height: 60px;
+     padding-top: 72px;
+     background: image-url('logo-x2.png') no-repeat;
+     background-size: 142px 132px;
+ }
+
+ #logo {
+     width: 142px;
+     height: 60px;
+     padding-top: 72px;
+     margin-left: -71px;
+     font-family: 'Gochi Hand', cursive;
+     font-size: 21px;
+     color: #ea6b6e;
+     text-align: center;
+     /* 	text-indent: -9999px; */
+     overflow: hidden;
+     display: block;
+     position: absolute;
+     top: 28px;
+     left: 50%;
+     background: image-url('logo.png') no-repeat;
+ }
+
+
 .slide{
     object-fit: cover;
     overflow: hidden;
@@ -340,4 +368,37 @@ color: white;
 
 textarea {
     min-height: 250px;
+}
+// About Us
+.about{
+    padding: 45px 0 57px;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 36px;
+}
+.about-txt{
+    line-height: 24px;
+    font-size: 15px;
+    color: #9e9994;
+}
+.person-img{
+     width: 270px;
+     height: 274px;
+}
+.mask{
+   width: 270px;
+   height: 274px;
+   position: absolute;
+   top: 0;
+   left: 0;
+   background: image-url('bg_person-mask.png') no-repeat;
+}
+.about .mask,
+.gallery .mask {
+    background: url(../images/bg_person-mask-x2.png) no-repeat;
+    background-size: 270px 274px;
+}
+.person-description h2 {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 36px;
+    color: #ea6b6e;
 }
