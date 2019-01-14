@@ -6,4 +6,12 @@ class Event < ApplicationRecord
   def all_day_event?
     self.start == self.start.midnight && self.end == self.end.midnight ? true : false
   end
+
+  
+  scope :this_month_year, -> { where('extract(year  from start) = ?', Date.today.strftime("%Y-m")) }
+  
+  scope :upcoming_events, -> { where("start = ? OR start > ?", Date.today, Date.today)  }
+
+  scope :archived_events, -> { where("start < ?", Date.today)  }
+
 end

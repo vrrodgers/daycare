@@ -1,7 +1,5 @@
 
-
-
-<div class="container">
+<div class>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -37,13 +35,14 @@
 
 
   
-  <div class="container">
+  <div class="">
     <section id="main">
       <div class="widget-boxes">
         <div class="box">
-          <a href="#">
+          <a>
+            
             <div class="box-info about">
-              <h2>About the school</h2>
+              <h2><%= link_to "About the school", about_us_path%></h2>
               <p>Enim ad minim veniam nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat duis aute irure dolor.</p>
             </div>
           </a>
@@ -59,7 +58,7 @@
         <div class="box">
           <a href="#">
             <div class="box-info fun">
-              <h2>Big fun for kids!</h2>
+              <h2><%= link_to "Big fun for kids!", events_path%></h2>
               <p>Accusamus et iusto dignissimos ducimus blanditiis praesentium voluptatum deleniti corrupti quos dolores et quas molestias.</p>
             </div>
           </a>
@@ -69,25 +68,34 @@
       <div class="event-wrap">
         <div class="block-event">
           <div class="upcoming-event">
-            <h2>April’s upcoming event</h2>
+            <h2><%= Date::MONTHNAMES[Date.today.month]%>’s upcoming event</h2>
             <div class="event-description">
-              <h3><a href="#">Libero tempore cum soluta nobis est eligendi optio cumque nihil</a></h3>
+              <h3><a href="#"><%= @event.title %></a></h3>
               <div class="metadata">
-                <time datetime="2014-04-17T09:00">17.04.14 
-                <span>09:00 AM</span></time>
+                <time datetime=<%=  @event.start %>><%= @event.start.strftime("%m.%d.%Y") %>
+                <span><%= @event.start.strftime("%l:%M:%p")%></span></time>
                 <span>Lorem ipsum dolor</span>
               </div>
-              <p>Vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+              <p><%= @event.description%></p>
               <a class="btn yellow" href="#">Learn more</a>
             </div>
           </div>
+
+-----------------------------------------
+
           <div class="widget-calendar">
+            <%= month_calendar do |date| %>
+             <%= date.strftime("%d")%>
+            <% end %>
+             <div class="legend"><span class="upcoming">Upcoming event</span><span class="archival">Archival event</span> </div>
+
+            
             <table class="event-calendar">
               <col><col><col><col><col><col><col>
               <thead>
               <tr>
                 <th scope="col" class="controls"><span class="prev-mn"><a href="#">-</a></span></th>
-                <th scope="col" colspan="5" class="month">April 2014</th>
+                <th scope="col" colspan="5" class="month"><%= Date::MONTHNAMES[Date.today.month]%> <%=  Time.current.year %></th>
                 <th scope="col" class="controls"><span class="next-mn"><a href="#">-</a></span></th>
               </tr>
               <tr>
@@ -282,3 +290,6 @@
 </div>
 
 
+<script>
+  var table = document.getElementsByClassName('table');
+</script>

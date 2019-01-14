@@ -10,10 +10,244 @@
     object-fit: cover;
     overflow: hidden;
 }
-.d-block{
-    width:  90%;
-    height: 50%;
-    text-align: center;
-    margin-left: 30px;
+
+.d-block {
+    width: 800px;
+    height: 400px;
+    
+    margin-left: 100px;
     border-radius: 20px;
+}
+
+//##############Calendar################
+
+.fc-time{
+color: white;
+}
+
+.fc-title{
+color: white;
+}
+
+.fc-center{
+    font-size: 40px;
+}
+
+.fc-unthemed td.fc-today {
+    background: gold;
+}
+
+.table{
+    width: 378px;
+    margin-bottom: 30px;
+    font-family: 'Gochi Hand', cursive;
+    font-size: 24px;
+    text-align: center;
+}
+
+.table col {
+    width: 54px;
+}
+
+.table th {
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.table td {
+    vertical-align: middle;
+    position: relative;
+}
+
+.table td .cell-wrap {
+    display: block;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    margin: 3px;
+    background: image-url('bg_td-normal.png') no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.table a {
+    text-decoration: none;
+}
+
+.table .archival a {
+    color: #fff;
+}
+
+.table td .archival {
+    position: relative;
+    background: image-url('bg_td-archival.png') no-repeat;
+    background-size: cover;
+}
+
+.table td .another-day {
+    color: #b24f51;
+    background: image-url('bg_td-another.png') no-repeat;
+    background-size: cover;
+}
+
+.table td .upcoming {
+    position: relative;
+    background: image-url('bg_td-upcoming.png') no-repeat;
+    background-size: cover;
+}
+
+.table .upcoming a {
+    color: #c48f32;
+}
+
+.table td .tooltip.hover {
+    display: block;
+}
+
+.table .upcoming:hover,
+.table .archival:hover {
+    color: #4e87a0;
+    background-image: image-url('bg_td-tooltip.png');
+    background-size: cover;
+}
+
+.table .upcoming:hover a,
+.table .archival:hover a {
+    color: #4e87a0;
+}
+
+.table .tooltip {
+    width: 448px;
+    margin: 0;
+    position: absolute;
+    top: -60px;
+    right: 40px;
+    z-index: 1060;
+    display: none;
+}
+
+.table .event-tooltip {
+    width: 388px;
+    padding: 15px 18px;
+    font-family: 'Arvo', serif;
+    font-size: 13px;
+    color: #4e87a0;
+    text-align: left;
+    background-color: #a1d7e4;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.table .event-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -16px;
+    top: 78px;
+    border: 8px solid transparent;
+    border-left: 8px solid #a1d7e4;
+}
+
+.table .event-tooltip h3,
+.table.event-tooltip h4 {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 25px;
+    color: #4e87a0;
+}
+
+.table .event-tooltip p {
+    line-height: 24px;
+}
+
+.table .event-tooltip .metadata {
+    color: #4e87a0;
+}
+
+.table .event-tooltip .metadata time {
+    display: inline-block;
+    height: 24px;
+    padding-left: 25px;
+    line-height: 24px;
+    background: image-url('ico_date-white.png') no-repeat 0 2px;
+}
+
+.table .event-tooltip .metadata span {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    line-height: 25px;
+    margin: 0 0 0 30px;
+    padding-left: 25px;
+    background: image-url('ico_place-white.png') no-repeat;
+}
+
+.table .event-tooltip .metadata time span {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    line-height: 25px;
+    margin: 0 0 0 30px;
+    padding-left: 25px;
+    background: image-url('ico_time-white.png') no-repeat 0 2px;
+}
+
+.table td,
+.table th {
+
+    padding: 1rem;
+    vertical-align: top;
+    border-top: none;
+}
+.calendar-title{
+    height: 125px;
+    padding: 0;
+    vertical-align: middle;
+    font-size: 24px;
+    font-family: 'Gochi Hand',
+    cursive;
+    text-align: center;
+    margin-left: 2em;
+}
+.day {
+    height: 65px;
+    margin: 3px;
+    width: 100%;
+    position: relative;
+    background: image_url("bg_td-upcoming-x2.png") no-repeat;
+    background-size: cover;
+}
+
+
+.table-striped tbody tr:nth-of-type(2n+1) {
+
+    background-color: transparent;
+}
+
+.tbody tr {
+    margin: 2px 2px 2px 2px;
+}
+.legend{
+    margin-top: 5px;
+}
+
+.upcoming {
+    position: relative;
+    background: image_url("bg_td-upcoming-x2.png") no-repeat;
+    background-size: cover;
+}
+
+//contact us
+
+.contact-title{
+    text-align: center;
+}
+.contact-form{
+    margin-top: 10px;
+}
+.contact-button{
+    margin-bottom: 25px;
+    
 }

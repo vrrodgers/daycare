@@ -11,9 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require jquery.bxslider.min
 //= require jquery.placeholder
 //= require main
 //= require imagesloaded.pkgd.min
@@ -21,13 +19,15 @@
 //= require social-share-button
 //= require cocoon
 //= require turbolinks
-//= require moment
+//= require bootstrap
 //= require fullcalendar
+//= require moment
 //= require daterangepicker
 //= require_tree .
 
-$('#calendar').fullCalendar({});
+
 $('.carousel').carousel()
+
 
 
 
