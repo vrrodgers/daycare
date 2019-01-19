@@ -14,4 +14,12 @@ class Event < ApplicationRecord
 
   scope :archived_events, -> { where("start < ?", Date.today)  }
 
+  def ArrayDates(array)
+      new_array = []
+      self.array.each do |arr|
+        new_array.push(arr.start.strftime("%d").to_i)
+      end
+    return new_array
+  end
+
 end

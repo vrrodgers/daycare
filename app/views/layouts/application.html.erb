@@ -29,8 +29,7 @@
 
 	<%= render 'layouts/nav' %> 
 
-			
-
+  
 
 	<%= yield %>
 
@@ -43,3 +42,23 @@
   </body>
     
 </html>
+
+<script>
+  var days = document.getElementsByClassName('day');
+  var upcoming = <%= @upcomingEvents %>;
+  var archived = <%= @archivedEvents %>;
+  console.log(upcoming);
+  function events(upcoming, archived, days){
+    for (let i = 0; i < days.length; i++){
+      var check = days[i].innerHTML.replace(/[^0-9]/, '');
+      var dayCheck = check.trim();
+      if(upcoming.includes(dayCheck)){
+          days[i].style.background = "yellow"; 
+      }
+      if(archived.includes(dayCheck)){
+          days[i].style.background = "pink"; 
+      }
+    }
+  };
+  events();
+</script>

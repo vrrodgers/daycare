@@ -13,13 +13,14 @@
                 <p>In vel purus ac purus porttitor condimentum vel eu tellus. Nulla euismod, risus eu fringilla luctus, tellus diam congue libero, eget porta nisl urna at ligula. <a href="#">Quisque neque orci, volutpat at massa egestas,</a> consequat sodales diam. Praesent ut felis mi. Proin et quam sed metus fringilla sodales. Mauris vel eleifend ligula. Proin a est eu nulla faucibus adipiscing.</p>
             </div>
         </div>
-           
+        <% @teams.each do |team| %>
         <div class="person">
             <div class="person-img">
                 <%= image_tag("woman.jpg")%>
                 <div class="mask"></div>
             </div>
             <div class="person-description">
+              <h2 class="about"> <%= team.name %></h2>
                 <h2 class="about">Dorothea Larsson</h2>
                 <address>(590) 452 463 984 
                 <a class="email" href="mailto:dorothea@kidschool.com">dorothea@kidschool.com</a>
@@ -27,6 +28,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat ipsum dui, quis posuere urna fermentum nec. Aliquam erat volutpat. Quisque pellentesque nulla dui, in rhoncus dui vestibulum ac. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque convallis, sapien in tempus pharetra, leo lectus ultrices purus, vitae vestibulum arcu velit at leo. </p>
             </div>
         </div>
+        <%end %>
         <div class="person">
             <div class="person-img">
                 <%= image_tag("woman.jpg") %>

@@ -41,7 +41,7 @@
         <div class="box">
           <a>
             
-            <div class="box-info about">
+            <div class="box-info about box-about">
               <h2><%= link_to "About the school", about_us_path%></h2>
               <p>Enim ad minim veniam nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat duis aute irure dolor.</p>
             </div>
@@ -50,7 +50,8 @@
         <div class="box">
           <a href="#">
             <div class="box-info experience">
-              <h2>Our experience</h2>
+            <h2><%= link_to "Our experience", about_us_path%></h2>
+              
               <p>Perspiciatis unde omnis iste natus voluptatem accusantium doloremque laudantium totam aperiam eaque dolor lorem.</p>
             </div>
           </a>
@@ -288,8 +289,3 @@
         </div>
     </section>
 </div>
-
-
-<script>
-  var table = document.getElementsByClassName('table');
-</script>

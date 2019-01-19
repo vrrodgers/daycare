@@ -2,13 +2,14 @@ class PagesController < ApplicationController
     
     def home
         @calendar_events = Event.this_month_year    
-        @upcomingEvents = @calendar_events.upcoming_events
-        @event = @upcomingEvents.take(1).first
+        @upcomingEvents = ArrayDates(@calendar_events.upcoming_events)
+        @event = @calendar_events.upcoming_events.take(1).first
         @counter = 0
-        @archivedEvents = @calendar_events.archived_events
+        @archivedEvents = ArrayDates(@calendar_events.archived_events)
     end
     
     def about_us
+        @teams = Team.all
     end
     
     def contact
@@ -17,4 +18,14 @@ class PagesController < ApplicationController
     def gallery
         @gallery = Gallery.all
     end
+    
+    private
+
+    def ArrayDates(array)
+      new_array = []
+      array.each do |arr|
+        new_array.push(arr.start.strftime("%d").to_s)
+      end
+    return new_array
+  end
 end
