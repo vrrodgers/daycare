@@ -84,7 +84,7 @@
 
 -----------------------------------------
 
-          <div class="widget-calendar">
+          <div class="widget-calendar" onload="events()">
             <%= month_calendar do |date| %>
              <%= date.strftime("%d")%>
             <% end %>
@@ -289,3 +289,8 @@
         </div>
     </section>
 </div>
+
+<script type="text/javascript">
+  var upcoming = <%= @upcomingEvents.inspect.html_safe  %>;
+  var archived = <%= @archivedEvents.inspect.html_safe %>;
+</script>

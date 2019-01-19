@@ -29,6 +29,25 @@
 
 $('.carousel').carousel()
 
+document.addEventListener("turbolinks:load", function () {
+  function events(){
+    var days = document.getElementsByClassName('day');
+    
+    for (let i = 0; i < days.length; i++){
+      var check = days[i].innerHTML.replace(/[^0-9]/, '');
+      var dayCheck = check.trim();
+      console.log(upcoming);
+      if(upcoming.includes(dayCheck)){
+          days[i].style.background = "yellow"; 
+      }
+      if(archived.includes(dayCheck)){
+          days[i].style.background = "pink"; 
+      }
+    }
+  };
+  events();
+
+})
 
 
 
