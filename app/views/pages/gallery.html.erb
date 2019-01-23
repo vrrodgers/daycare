@@ -1,8 +1,11 @@
 
+<div class="container" >
 
-
-<div class="transitions-enabled" id="gallery">
-  <% @gallery.each do |gallery| %>
-      <%= image_tag gallery.image, height: "#{gallery.height}px;", width: "#{gallery.width}px;" %>
+  <div class="transitions-enabled clearfix" id="masonry-container">
+    <% @gallery.each do |gallery| %>
+      
+        <%= image_tag gallery.image, class: "box col#{rand(1..5)}", height: "#{gallery.height}px;", width: "#{gallery.width}px;" %>
+      
     <% end %>
-</div> 
+  </div>
+</div>
